@@ -1,20 +1,24 @@
-# Book Search Engine 
+# Book Search Engine
 
-This project comprises several components including a Scrapy crawler, a Solr server setup and UI. It is designed to crawl, index, and search book data efficiently.
+This project comprises several components including a Scrapy crawler, a Solr server setup, and a UI. It is designed to crawl, index, and search book data efficiently.
 
 [Overview video](TODO)
 
+## Features
+- **Multiple languages**: Supports searching in multiple languages, applying Solr pipeline to remove stop words, stemming, etc.
+- **Operators**: Supports complex queries through UI elements called operators, which are essentially a reskin of Solr's querying language.
+- **Fast querying and retrieval**
+- **Scraping data** from various sources
 
 ## Project Structure
 
 ```
 Root/
-├── project3Book/  # Scrapy for crawling
+├── project3Book/         # Scrapy for crawling
 │   └── data/
 │       └── bookData3.json # Crawled data
 ├── bookSearchUI/         # User Interface
 └── Solr-8.11.0/          # Solr server
-
 ```
 
 ## Components
@@ -31,14 +35,13 @@ Root/
    scrapy runspider bookSpider.py -o out.json
    ```
 
-The scraper is designed to extract data from sources:
-- https://www.doabooks.org
-- https://market.feedbooks.com
-- www.bookdepository.com (closed)
-
+The scraper extracts data from the following sources:
+- [DOABooks](https://directory.doabooks.org/recent-submissions?offset=0)
+- [Feedbooks](https://market.feedbooks.com/recent)
+- [Book Depository](https://www.bookdepository.com/bestsellers?searchLang=123&page=0) (closed)
 
 ### Solr - Search Platform
-This platform uses **Sorl-8.11.0** as a search engine. 
+This project uses **Solr 8.11.0** as the search engine. Use the distributed code as some settings have been modified (refer to the guide for details).
 
 #### To start Solr:
 1. Navigate to the Solr directory:
@@ -50,11 +53,11 @@ This platform uses **Sorl-8.11.0** as a search engine.
    bin/solr start -e cloud
    ```
 3. When prompted to create a new collection:
-   - Provide the collection name as `bookTest2` to avoid creating a new one.
+   - Provide the collection name as `bookTest2` to use the example scraped data.
 
-### UI - User Interface (Quasar\Vue)
+### UI - User Interface (Quasar/Vue)
 
-The UI is hosted on GitLab Pages to avoid local dependency setup (need to run the application on localhost 8983):
+The UI is hosted on GitLab Pages to avoid local dependency setup (needs to run the application on localhost:8983):
 
 🔗 [Book Search UI](https://joyalbertini.github.io/bookSearchUI/#/)
 
@@ -75,59 +78,25 @@ The UI is hosted on GitLab Pages to avoid local dependency setup (need to run th
    ```bash
    quasar build
    ```
-   Note: Running the build locally requires setting up a server or using GitLab Pages as demonstrated.
+   Note: Running the build locally requires setting up a server or using GitLab Pages.
 
 ## Guide/Report
-[Guide PDF](gitData/report%20project%203%20book%20Search%20Joy%20Albertini.pdf)
+For more detailed information, refer to the [Guide PDF](gitData/report%20project%203%20book%20Search%20Joy%20Albertini.pdf).
 
+---
 
+### Additional Information
 
+#### Solr Customizations
+- **CORS**: Disabled CORS protection for direct queries.
+- **URI Size**: Increased `maxRequestHeaderSize` in `jetty.xml` to handle long queries.
 
+#### Query Strategy
+- **Base Query**: Defined in `bookSearchUI/quasar-demo/src/store/solr.js`.
+- **ORed Words**: Increases recall by ORing all words split by space in the query.
+- **Field Boosts**: Important fields like `subjects` and `title` have higher boosts.
 
-Strcuture: 
-Root:
-  project3Book : Scrapy (crawling)
-     Crawled data in project3Book/project3Book/data/bookData3.json
-  bookSearchUI : UI and 
-  Solr-8.11.0 : solr
-  Report (report and slides)
-
-
-Scrapy  -----------------------------------------------------------
-To run scrapy:
-Cd to project3Book/project3Book/spiders
-
-scrapy runspider bookSpider.py -o out.json
-
-Solr --------------------------------------------------------------
-To run solrL
-Cd to solr-8.11.0 
-
-bin/solr start -e cloud important should be started on default port 
-8983
-
-On question: now let's create a new collection for indexing documents 
-in your 1-node cluster.
-Please provide a name for your new collection: [gettingstarted] 
-You can answer with bookTest2 so that you don't have to create 
-a new collection
-
-
-UI ----------------------------------------------------------------
-I posted the UI on gitlab pages so that you don't have to download 
-all dependencies needed to run the the UI, works perfectly with solr
-
-https://joyalbertini.github.io/bookSearchUI/#/
-
-If you want to run it you should go to in bookSearchUI/quasar-demo
-
-$npm install : to install all dependencies 
-$quasar dev : run the application in dev mode, work correctly
-
-If you want the build 
-$quasar build
-But to run it you need to set up a server or use gitlab Pages as I did. 
-
- 
-
+#### Multiple Languages
+- **Dynamic Fields**: Uses Solr dynamic fields with language-specific suffixes (`_txt_en`, `_txt_it`).
+- **Querying**: Evaluates queries across all supported languages, leading to long queries.
 

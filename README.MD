@@ -55,11 +55,15 @@ This project uses **Solr 8.11.0** as the search engine. Use the distributed code
 3. When prompted to create a new collection:
    - Provide the collection name as `bookTest2` to use the example scraped data.
 
-### UI - User Interface (Quasar/Vue)
+### UI - User Interface (Quasar/Vue/Vuex)
 
 The UI is hosted on GitLab Pages to avoid local dependency setup (needs to run the application on localhost:8983):
 
 🔗 [Book Search UI](https://joyalbertini.github.io/bookSearchUI/#/)
+
+- Quasar 2.0.0 
+- Vue 3.2 
+- Vuex 4
 
 #### To run locally:
 1. Navigate to the UI directory:

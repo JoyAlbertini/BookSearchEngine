@@ -1,0 +1,13 @@
+Java HotSpot(TM) 64-Bit Server VM warning: -XX:+UseLargePages not supported in this VM
+2021-11-25 00:28:42.278 INFO  (main) [   ] o.e.j.u.log Logging initialized @923ms to org.eclipse.jetty.util.log.Slf4jLog
+2021-11-25 00:28:42.506 INFO  (main) [   ] o.e.j.s.Server jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 11.0.2+9-LTS
+2021-11-25 00:28:42.516 INFO  (main) [   ] o.e.j.d.p.ScanningAppProvider Deployment monitor [file:///Users/ms/Desktop/IRproject/solr-8.11.0/server/contexts/] at interval 0
+2021-11-25 00:28:42.719 INFO  (main) [   ] o.e.j.w.StandardDescriptorProcessor NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+2021-11-25 00:28:42.727 INFO  (main) [   ] o.e.j.s.session DefaultSessionIdManager workerName=node0
+2021-11-25 00:28:42.727 INFO  (main) [   ] o.e.j.s.session No SessionScavenger set, using defaults
+2021-11-25 00:28:42.729 INFO  (main) [   ] o.e.j.s.session node0 Scavenging every 660000ms
+2021-11-25 00:28:42.784 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter Using logger factory org.apache.logging.slf4j.Log4jLoggerFactory
+2021-11-25 00:28:42.789 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter  ___      _       Welcome to Apache Solr™ version 8.11.0
+2021-11-25 00:28:42.789 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter / __| ___| |_ _   Starting in cloud mode on port 7574
+2021-11-25 00:28:42.789 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter \__ \/ _ \ | '_|  Install dir: /Users/ms/Desktop/IRproject/solr-8.11.0
+2021-11-25 00:28:42.789 INFO  (main) [   ] o.a.s.s.SolrDispatchFilter |___/\___/_|_|    Start time: 2021-11-25T00:28:42.789340Z

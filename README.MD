@@ -1,5 +1,5 @@
 # Book Search Engine
-
+![Book Search Logo](gitData/BookSearch.png)
 This project comprises several components including a Scrapy crawler, a Solr server setup, and a UI. It is designed to crawl, index, and search book data efficiently.
 
 [Overview video](TODO)

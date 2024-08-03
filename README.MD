@@ -2,7 +2,7 @@
 <img src="gitData/BookSearch.png" alt="Book Search Logo" width="200" height="200">
 This project comprises several components including a Scrapy crawler, a Solr server setup, and a UI. It is designed to crawl, index, and search book data efficiently.
 
-<img src="gitData/BookSearch.gif" alt="Book Search Logo" width="1440" height="500">
+<img src="gitData/BookSearch.gif" alt="Book Search Logo" width="1440" height="600">
 
 [Overview video](TODO)
 
